@@ -1,0 +1,38 @@
+{
+  "name": "coriding-matching",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "nodemon --exec ts-node src/index.ts",
+    "sample": "ts-node src/scripts/sampleData.ts",
+    "test-bangalore": "ts-node src/scripts/testBangalore.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@mapbox/polyline": "^1.2.1",
+    "@prisma/client": "^6.15.0",
+    "@turf/turf": "^7.2.0",
+    "@types/axios": "^0.9.36",
+    "@types/express": "^5.0.3",
+    "@types/polyline": "^0.1.32",
+    "axios": "^1.11.0",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "frechet": "^1.0.1",
+    "redis": "^5.8.2"
+  },
+  "devDependencies": {
+    "@types/mapbox__polyline": "^1.0.5",
+    "@types/node": "^24.3.0",
+    "nodemon": "^3.1.10",
+    "prisma": "^6.15.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}
