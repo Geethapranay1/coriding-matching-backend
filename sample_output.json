@@ -1,138 +1,38 @@
 {
-  "success": true,
-  "base": {
-    "id": 12,
-    "pickup": {
-      "lat": 12.9352,
-      "lng": 77.6245
+    "baseTrip": {
+        "id": 99,
+        "pickup": [
+            12.9261,
+            77.686
+        ],
+        "drop": [
+            13.1992,
+            77.7087
+        ],
+        "departureTime": "2025-09-05T18:20:54.000Z"
     },
-    "drop": {
-      "lat": 12.9698,
-      "lng": 77.75
-    },
-    "departureTime": "2025-09-01T09:08:00.000Z",
-    "distance": "17.25 km",
-    "duration": "18 min"
-  },
-  "matches": [
-    {
-      "tripId": 1,
-      "pickup": {
-        "lat": 12.9352,
-        "lng": 77.6245
-      },
-      "drop": {
-        "lat": 12.9698,
-        "lng": 77.75
-      },
-      "departureTime": "2025-09-01T09:00:00.000Z",
-      "timeDiff": 8,
-      "overlap": 100,
-      "extraDist": 0,
-      "score": 70,
-      "valid": true,
-      "addDist": "0.00 km",
-      "status": "Match"
-    },
-    {
-      "tripId": 8,
-      "pickup": {
-        "lat": 12.9352,
-        "lng": 77.6245
-      },
-      "drop": {
-        "lat": 12.9698,
-        "lng": 77.75
-      },
-      "departureTime": "2025-09-01T09:08:00.000Z",
-      "timeDiff": 0,
-      "overlap": 100,
-      "extraDist": 0,
-      "score": 70,
-      "valid": true,
-      "addDist": "0.00 km",
-      "status": "Match"
-    },
-    {
-      "tripId": 9,
-      "pickup": {
-        "lat": 12.9352,
-        "lng": 77.6245
-      },
-      "drop": {
-        "lat": 12.9698,
-        "lng": 77.75
-      },
-      "departureTime": "2025-09-01T09:08:00.000Z",
-      "timeDiff": 0,
-      "overlap": 100,
-      "extraDist": 0,
-      "score": 70,
-      "valid": true,
-      "addDist": "0.00 km",
-      "status": "Match"
-    },
-    {
-      "tripId": 10,
-      "pickup": {
-        "lat": 12.9352,
-        "lng": 77.6245
-      },
-      "drop": {
-        "lat": 12.9698,
-        "lng": 77.75
-      },
-      "departureTime": "2025-09-01T09:08:00.000Z",
-      "timeDiff": 0,
-      "overlap": 100,
-      "extraDist": 0,
-      "score": 70,
-      "valid": true,
-      "addDist": "0.00 km",
-      "status": "Match"
-    },
-    {
-      "tripId": 11,
-      "pickup": {
-        "lat": 12.9352,
-        "lng": 77.6245
-      },
-      "drop": {
-        "lat": 12.9698,
-        "lng": 77.75
-      },
-      "departureTime": "2025-09-01T09:08:00.000Z",
-      "timeDiff": 0,
-      "overlap": 100,
-      "extraDist": 0,
-      "score": 70,
-      "valid": true,
-      "addDist": "0.00 km",
-      "status": "Match"
-    },
-    {
-      "tripId": 3,
-      "pickup": {
-        "lat": 12.9784,
-        "lng": 77.6408
-      },
-      "drop": {
-        "lat": 12.9698,
-        "lng": 77.75
-      },
-      "departureTime": "2025-09-01T09:10:00.000Z",
-      "timeDiff": 2,
-      "overlap": 51.63,
-      "extraDist": -15.49,
-      "score": 24.78,
-      "valid": true,
-      "addDist": "-2.67 km",
-      "status": "Match"
-    }
-  ],
-  "count": 6,
-  "window": {
-    "start": "2025-09-01T08:38:00.000Z",
-    "end": "2025-09-01T09:38:00.000Z"
-  }
+    "matches": [
+        {
+            "matchedTripId": 100,
+            "overlapPercent": 88.09,
+            "extraDistancePercent": -2.81,
+            "matchScore": 104.25,
+            "valid": true,
+            "frechetDistance": 1024.11,
+            "similarity": 86.12,
+            "destinationMatch": true,
+            "routeType": "same-origin-dest"
+        },
+        {
+            "matchedTripId": 101,
+            "overlapPercent": 17.23,
+            "extraDistancePercent": -11.14,
+            "matchScore": 61.38,
+            "valid": true,
+            "frechetDistance": 10870,
+            "similarity": 0,
+            "destinationMatch": true,
+            "routeType": "same-origin-dest"
+        }
+    ]
 }
