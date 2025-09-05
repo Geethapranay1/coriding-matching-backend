@@ -59,7 +59,7 @@ src/
 └── index.ts               # Main application server
 ```
 
-## 🚦 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -108,7 +108,7 @@ src/
    npm run dev
    ```
 
-## 📡 API Endpoints
+## API Endpoints
 
 ### 1. Health Check
 ```http
@@ -139,7 +139,7 @@ GET /trips
 GET /matches/:tripId
 ```
 
-## 🧪 Testing & Demo
+## Testing & Demo
 
 ### Automated Testing
 ```bash
