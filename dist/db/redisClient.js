@@ -9,32 +9,26 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getCache = getCache;
-exports.setCache = setCache;
+exports.setCache = exports.getCache = void 0;
 const redis_1 = require("redis");
 const client = (0, redis_1.createClient)({ url: process.env.REDIS_URL });
-client.on('error', (err) => console.error('Redis Error', err));
-function init() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            yield client.connect();
-            console.log("Redis connected");
-        }
-        catch (error) {
-            console.error("Redis connection failed", error);
-        }
-    });
-}
-init();
-function getCache(key) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const val = yield client.get(key);
-        return val ? JSON.parse(val) : null;
-    });
-}
-function setCache(key_1, value_1) {
-    return __awaiter(this, arguments, void 0, function* (key, value, ttl = 3600) {
-        yield client.set(key, JSON.stringify(value), { EX: ttl });
-    });
-}
+client.on('error', (err) => console.error('redis err', err));
+(() => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        yield client.connect();
+        console.log('redis ok');
+    }
+    catch (error) {
+        console.error('redis fail', error);
+    }
+}))();
+const getCache = (key) => __awaiter(void 0, void 0, void 0, function* () {
+    const val = yield client.get(key);
+    return val ? JSON.parse(val) : null;
+});
+exports.getCache = getCache;
+const setCache = (key_1, value_1, ...args_1) => __awaiter(void 0, [key_1, value_1, ...args_1], void 0, function* (key, value, ttl = 3600) {
+    yield client.set(key, JSON.stringify(value), { EX: ttl });
+});
+exports.setCache = setCache;
 exports.default = client;
