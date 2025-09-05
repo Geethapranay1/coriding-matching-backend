@@ -1,4 +1,4 @@
-# Route Matching Algorithm
+# Cooriding Matching Algorithm
 
 Advanced live route matching system for ride-sharing applications built with Node.js, TypeScript, PostgreSQL, and Redis.
 
@@ -12,7 +12,7 @@ Advanced live route matching system for ride-sharing applications built with Nod
 - Redis caching for performance
 - PostgreSQL storage with Prisma ORM
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Backend**: Node.js with Express.js
 - **Database**: PostgreSQL with Prisma ORM
@@ -20,9 +20,9 @@ Advanced live route matching system for ride-sharing applications built with Nod
 - **Route Service**: OSRM (Open Source Routing Machine)
 - **Language**: TypeScript
 
-## 📋 Requirements Met
+## Requirements Met
 
-### Core Requirements ✅
+### Core Requirements
 - [x] Route geometry analysis using OSRM Directions API
 - [x] Polyline similarity calculation for overlap detection
 - [x] Route deviation constraint (≤15% extra distance)
@@ -30,16 +30,21 @@ Advanced live route matching system for ride-sharing applications built with Nod
 - [x] Match percentage calculation
 - [x] Sample data with Bengaluru coordinates
 
-### Extra Credit ✅
+### Extra Credit
 - [x] Redis caching for API responses
 - [x] PostgreSQL database storage
 - [x] RESTful API endpoints
 - [x] Comprehensive testing and documentation
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 src/
+├── __tests__
+│   ├── tripMatching.test.ts
+├── routes
+│    ├── matches.ts
+│    └── trips.ts
 ├── db/
 │   ├── prismaClient.ts    # Database client
 │   └── redisClient.ts     # Redis caching client
@@ -67,7 +72,7 @@ src/
 
 1. **Clone and setup:**
    ```bash
-   git clone <your-repo>
+   git clone https://github.com/Geethapranay1/coriding-matching-backend
    cd coriding-matching
    npm install
    ```
@@ -162,31 +167,46 @@ npm run test-app
 
 ```json
 {
-  "success": true,
-  "baseTrip": {
-    "id": 8,
-    "pickup": { "lat": 12.9352, "lng": 77.6245 },
-    "drop": { "lat": 12.9698, "lng": 77.7500 },
-    "departureTime": "2025-09-01T09:08:00.000Z",
-    "distance": "18.45 km",
-    "duration": "45 minutes"
-  },
-  "matches": [
-    {
-      "matchedTripId": 1,
-      "overlapPercent": 95.2,
-      "extraDistancePercent": 2.1,
-      "matchPercent": 85.6,
-      "isValidMatch": true,
-      "additionalDistance": "0.35 km",
-      "status": "Good Match"
-    }
-  ],
-  "matchCount": 1
+    "baseTrip": {
+        "id": 99,
+        "pickup": [
+            12.9261,
+            77.686
+        ],
+        "drop": [
+            13.1992,
+            77.7087
+        ],
+        "departureTime": "2025-09-05T18:20:54.000Z"
+    },
+    "matches": [
+        {
+            "matchedTripId": 100,
+            "overlapPercent": 88.09,
+            "extraDistancePercent": -2.81,
+            "matchScore": 104.25,
+            "valid": true,
+            "frechetDistance": 1024.11,
+            "similarity": 86.12,
+            "destinationMatch": true,
+            "routeType": "same-origin-dest"
+        },
+        {
+            "matchedTripId": 101,
+            "overlapPercent": 17.23,
+            "extraDistancePercent": -11.14,
+            "matchScore": 61.38,
+            "valid": true,
+            "frechetDistance": 10870,
+            "similarity": 0,
+            "destinationMatch": true,
+            "routeType": "same-origin-dest"
+        }
+    ]
 }
 ```
 
-## 🔧 Matching Algorithm
+## Matching Algorithm
 
 ### Core Logic
 1. **Time Window Filtering**: Find trips within ±30 minutes
@@ -200,16 +220,15 @@ npm run test-app
 - **Time Window**: ±30 minutes from departure time
 - **Match Score**: Weighted combination of overlap and distance factors
 
-## 📊 Sample Bengaluru Locations
+## Sample Bengaluru Locations
 
 The application includes realistic sample data with these Bengaluru locations:
 - Koramangala ↔ Whitefield
 - Indiranagar ↔ Electronic City  
 - Banashankari ↔ Jayanagar
 - HSR Layout ↔ BTM Layout
-- And more...
 
-## 🎯 Key Features Demonstrated
+## Key Features Demonstrated
 
 1. **Real Route Geometry**: Uses OSRM for actual driving routes
 2. **Intelligent Matching**: Beyond simple radius-based matching
@@ -217,32 +236,31 @@ The application includes realistic sample data with these Bengaluru locations:
 4. **Scalable Architecture**: Clean separation of concerns
 5. **Comprehensive Testing**: Automated test suite with real data
 
-## 📝 npm Scripts
+## npm Scripts
 
 ```json
 {
-  "dev": "nodemon --exec ts-node src/index.ts",
-  "build": "tsc",
-  "start": "node dist/index.js",
-  "create-sample-data": "ts-node src/scripts/sampleData.ts",
-  "test-app": "ts-node src/scripts/testApp.ts"
+    "test": "jest",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "nodemon --exec ts-node src/index.ts"
 }
 ```
 
-## 🔍 Algorithm Complexity
+## Algorithm Complexity
 
 - **Time Complexity**: O(n × m) where n = candidate trips, m = polyline points
 - **Space Complexity**: O(p) where p = total polyline points
 - **Optimizations**: Redis caching, indexed database queries, time window filtering
 
-## 🏆 Extra Mile Features
+## Extra Mile Features
 
 - **Detailed Match Analysis**: Shows overlap percentage, extra distance, and time difference
 - **Smart Scoring**: Weighted algorithm for better match ranking
 - **Real-world Testing**: Bangalore coordinates with realistic routes
 - **Production Ready**: Error handling, logging, and comprehensive API responses
 
-## 🚧 Future Enhancements
+## Future Enhancements
 
 - Real-time matching with WebSockets
 - Machine learning for dynamic matching weights
